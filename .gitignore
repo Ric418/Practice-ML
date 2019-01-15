@@ -93,3 +93,6 @@ pytorch_handbook/chapter9/section9_9.ipynb
 pytorch_handbook/LICENSE.md
 pytorch_handbook/README.md
 pytorch_handbook/_gitignore
+pytorch_handbook/chapter6/__pycache__/net.cpython-37.pyc
+pytorch_handbook/chapter4/.ipynb_checkpoints/section4_2-checkpoint.ipynb
+Grad_thesis/Humanome mlcourse 4.ipynb
