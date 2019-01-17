@@ -34,62 +34,34 @@ class Generator(nn.Module):
         # ニューラルネットワークの構造を定義する
         self.layers = nn.ModuleDict({
             'layer0': nn.Sequential(
-<<<<<<< HEAD
                 nn.ConvTranspose1d(nz, nch_g * 16, 4, 1, 0),     # 転置畳み込み
                 nn.BatchNorm1d(nch_g * 16),                      # バッチノーマライゼーション
                 nn.ReLU()                                       # 正規化線形関数
             ),  # (B, nz, 1) -> (B, nch_g*16, 4)
-=======
-                nn.ConvTranspose1d(nz, nch_g * 16, 2, 1, 0),     # 転置畳み込み
-                nn.BatchNorm1d(nch_g * 16),                      # バッチノーマライゼーション
-                nn.ReLU()                                       # 正規化線形関数
-            ),  # (B, nz, 1, 1) -> (B, nch_g*8, 4, 4)
->>>>>>> e42641d0b3ba7b8bdaea39677bd6e2a5c49b7c8b
             'layer1': nn.Sequential(
                 nn.ConvTranspose1d(nch_g * 16, nch_g * 8, 4, 2, 1),     # 転置畳み込み
                 nn.BatchNorm1d(nch_g * 8),                      # バッチノーマライゼーション
                 nn.ReLU()                                       # 正規化線形関数
-<<<<<<< HEAD
             ),  # (B, nch_g*16, 4) -> (B, nch_g*8, 8)
-=======
-            ),  # (B, nz, 1, 1) -> (B, nch_g*8, 4, 4)
->>>>>>> e42641d0b3ba7b8bdaea39677bd6e2a5c49b7c8b
             'layer2': nn.Sequential(
                 nn.ConvTranspose1d(nch_g * 8, nch_g * 4, 4, 2, 1),
                 nn.BatchNorm1d(nch_g * 4),
                 nn.ReLU()
-<<<<<<< HEAD
             ),  # (B, nch_g*8, 8, 8) -> (B, nch_g*4, 16, 16)
-=======
-            ),  # (B, nch_g*8, 4, 4) -> (B, nch_g*4, 8, 8)
->>>>>>> e42641d0b3ba7b8bdaea39677bd6e2a5c49b7c8b
             'layer3': nn.Sequential(
                 nn.ConvTranspose1d(nch_g * 4, nch_g * 2, 4, 2, 1),
                 nn.BatchNorm1d(nch_g * 2),
                 nn.ReLU()
-<<<<<<< HEAD
             ),  # (B, nch_g*4, 16, 16) -> (B, nch_g*2, 32, 32)
-=======
-            ),  # (B, nch_g*4, 8, 8) -> (B, nch_g*2, 16, 16)
-
->>>>>>> e42641d0b3ba7b8bdaea39677bd6e2a5c49b7c8b
             'layer4': nn.Sequential(
                 nn.ConvTranspose1d(nch_g * 2, nch_g, 4, 2, 1),
                 nn.BatchNorm1d(nch_g),
                 nn.ReLU()
-<<<<<<< HEAD
             ),  # (B, nch_g*2, 32, 32) -> (B, nch_g, 64, 64)
             'layer5': nn.Sequential(
                 nn.ConvTranspose1d(nch_g, nch, 4, 2, 1),
                 nn.Tanh()
             )   # (B, nch_g, 64, 64) -> (B, nch, 128, 128)
-=======
-            ),  # (B, nch_g*2, 16, 16) -> (B, nch_g, 32, 32)
-            'layer5': nn.Sequential(
-                nn.ConvTranspose1d(nch_g, nch, 4, 2, 1),
-                nn.Tanh()
-            )   # (B, nch_g, 32, 32) -> (B, nch, 64, 64)
->>>>>>> e42641d0b3ba7b8bdaea39677bd6e2a5c49b7c8b
         })
 
     def forward(self, z):
