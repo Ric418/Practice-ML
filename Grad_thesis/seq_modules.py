@@ -31,9 +31,8 @@ def seq_save(seq, filename, flag):
                 counter+=1
             
 
-def vec2seq_save(epoch, seq, batch):
+def vec2seq_save(filename, seq, batch):
     seq = seq.numpy()
-    filename = 'fake_seq_epoch' + str(epoch+1)
     for itr, data in enumerate(seq):
         sequences = '' #init sequences
         #print("This is", itr+1, "th loop.")
@@ -54,3 +53,25 @@ def vec2seq_save(epoch, seq, batch):
             seq_save(sequences,filename,True)
         else:
             seq_save(sequences,filename,False)
+            
+def txt2fasta(input_file, output_file, fasta_name):
+    '''
+    input_text:Fasta形式に変換したい読み込むTXTファイルの名前
+    filename:出力するFasta形式のTXTファイルの名前
+    fasta_name:Fasta形式の > の次に来る名前
+    '''
+    with open(input_file, 'rt') as load:
+        counter = 1
+        while True:
+            line = load.readline()
+            if not line:
+                    break
+            else:
+                if not os.path.exists(output_file):
+                    with open(output_file, 'wt') as save:
+                        save.write('>'+ fasta_name + str(counter) + '\n' + line)
+                        counter += 1
+                else:
+                    with open(output_file, 'at') as save:
+                        save.write('>'+ fasta_name + str(counter) + '\n' + line)
+                        counter += 1
