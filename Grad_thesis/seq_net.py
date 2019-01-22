@@ -90,30 +90,30 @@ class Discriminator(nn.Module):
         self.layers = nn.ModuleDict({
             'layer0': nn.Sequential(
                 nn.Conv1d(nch, nch_d, 4, 2, 1),     # 畳み込み
-                nn.LeakyReLU(negative_slope=0.2)    # leaky ReLU関数
+                nn.ReLU()    # leaky ReLU関数
             ),  # (B, nch, 128) -> (B, nch_d, 64)
             'layer1': nn.Sequential(
                 nn.Conv1d(nch_d, nch_d * 2, 4, 2, 1),
                 nn.BatchNorm1d(nch_d * 2),
-                nn.LeakyReLU(negative_slope=0.2)
+                nn.ReLU()
             ),  # (B, nch_d, 64) -> (B, nch_d*2, 32)
             'layer2': nn.Sequential(
                 nn.Conv1d(nch_d * 2, nch_d * 4, 4, 2, 1),
                 nn.BatchNorm1d(nch_d * 4),
-                nn.LeakyReLU(negative_slope=0.2)
+                nn.ReLU()
             ),  # (B, nch_d*2, 32) -> (B, nch_d*4, 16)
             'layer3': nn.Sequential(
                 nn.Conv1d(nch_d * 4, nch_d * 8, 4, 2, 1),
                 nn.BatchNorm1d(nch_d * 8),
-                nn.LeakyReLU(negative_slope=0.2)
+                nn.ReLU()
             ),  # (B, nch_d*4, 16) -> (B, nch_g*8, 8)
             'layer4': nn.Sequential(
                 nn.Conv1d(nch_d * 8, nch_d * 16, 4, 2, 1),
                 nn.BatchNorm1d(nch_d * 16),
-                nn.LeakyReLU(negative_slope=0.2)
+                nn.ReLU()
             ),  # (B, nch_d*8, 8) -> (B, nch_d*16, 4)
             'layer5': nn.Conv1d(nch_d * 16, 1, 4, 1, 0)
-                # (B, nch_d*16, 4) -> (B, 1, 1)
+            # (B, nch_d*16, 4) -> (B, 1, 1)
         })
 
     def forward(self, x):
