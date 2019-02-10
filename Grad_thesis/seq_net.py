@@ -27,7 +27,7 @@ class Generator(nn.Module):
         """
         :param nz: 入力ベクトルzの次元
         :param nch_g: 最終層の入力チャネル数
-        :param nch: 出力画像のチャネル数
+        :param nch: 出力配列のチャネル数
         """
         super(Generator, self).__init__()
         
@@ -68,7 +68,7 @@ class Generator(nn.Module):
         """
         順方向の演算
         :param z: 入力ベクトル
-        :return: 生成画像
+        :return: 生成配列
         """
         for layer in self.layers.values():  # self.layersの各層で演算を行う
             z = layer(z)
