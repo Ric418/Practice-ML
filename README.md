@@ -1,5 +1,4 @@
 # Practice-ML
-mainly about ML
 機械学習の学習の為のリポジトリです、研究の成果物などもここにまとめます。
 
 ## GradThesisについて
