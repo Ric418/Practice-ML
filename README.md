@@ -3,8 +3,8 @@
 
 ## GradThesisについて
 ### 概要
-学部の卒業論文に関してのコードをまとめてあります。
-論文：https://drive.google.com/file/d/1r56vpUBB4srZacMp1zR5HGXoY7XURfbM/view?usp=sharing
+学部の卒業論文に関してのコードをまとめてあります。  
+論文：https://drive.google.com/file/d/1r56vpUBB4srZacMp1zR5HGXoY7XURfbM/view?usp=sharing  
 論文中の手法1,2,3,4, 提案手法をそれぞれjupyter notebookとして
 - LSGAN_iterNONE.ipynb
 - LSGAN_iterFixedAdam.ipynb
