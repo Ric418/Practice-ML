@@ -10,14 +10,14 @@
 - LSGAN_iterFixedAdam.ipynb
 - LSGAN_iterFixedAdam_leakyReLU.ipynb
 - LSGAN_iterFixedAdam_Leaky_Tanh.ipynb
-- LSGAN_iterFULL.ipynb
+- LSGAN_iterFULL.ipynb  
 でそれぞれまとめてあります。
 
 類似塩基配列の生成に関しては
-- LSGAN_ver3.ipynb
+- LSGAN_ver3.ipynb  
 を実行、論文中の基盤ネットワーク・提案ネットワークの生成器・識別器のモデルはそれぞれ
 - seq_net.py
-- seq_net_ver2.py
+- seq_net_ver2.py  
 になります。
 
 ### 環境
