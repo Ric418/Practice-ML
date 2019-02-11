@@ -2,10 +2,10 @@
 mainly about ML
 機械学習の学習の為のリポジトリです、研究の成果物などもここにまとめます。
 
-##GradThesisについて
-###概要
+## GradThesisについて
+### 概要
 学部の卒業論文に関してのコードをまとめてあります。
-論文：[https://drive.google.com/file/d/1r56vpUBB4srZacMp1zR5HGXoY7XURfbM/view?usp=sharing]:(https://drive.google.com/file/d/1r56vpUBB4srZacMp1zR5HGXoY7XURfbM/view?usp=sharing)
+論文：https://drive.google.com/file/d/1r56vpUBB4srZacMp1zR5HGXoY7XURfbM/view?usp=sharing
 論文中の手法1,2,3,4, 提案手法をそれぞれjupyter notebookとして
 - LSGAN_iterNONE.ipynb
 - LSGAN_iterFixedAdam.ipynb
@@ -21,8 +21,11 @@ mainly about ML
 - 
 になります。
 
-###環境
+### 環境
 - framework: PyTorch 1.0.0
+
+GPUを使用する場合
 - CUDA: Toolkit 10.0
 - cuDNN: v7
+
 Google colabolatoryで動かす場合はnotebook上の指定のセルを実行してください。
