@@ -1,7 +1,7 @@
 # Practice-ML
 機械学習の学習の為のリポジトリです、研究の成果物などもここにまとめます。
 
-## GradThesisについて
+## Grad_Thesisについて
 ### 概要
 学部の卒業論文に関してのコードをまとめてあります。  
 論文：https://drive.google.com/file/d/1r56vpUBB4srZacMp1zR5HGXoY7XURfbM/view?usp=sharing  
@@ -15,9 +15,9 @@
 
 類似塩基配列の生成に関しては
 - LSGAN_ver3.ipynb
-を実行、生成器・識別器のモデルは
+を実行、論文中の基盤ネットワーク・提案ネットワークの生成器・識別器のモデルはそれぞれ
 - seq_net.py
-- 
+- seq_net_ver2.py
 になります。
 
 ### 環境
@@ -27,4 +27,4 @@ GPUを使用する場合
 - CUDA: Toolkit 10.0
 - cuDNN: v7
 
-Google colabolatoryで動かす場合はnotebook上の指定のセルを実行してください。
+Google colabolatory上で動かす場合はnotebook上の指定のセルを実行してください。
