@@ -25,6 +25,7 @@
 
 GPUを使用する場合
 - CUDA: Toolkit 10.0
-- cuDNN: v7
+- cuDNN: v7  
+環境構築に関しては[こちら](https://qiita.com/Ric418/items/b73f929739df92079451)を参考にしてください。
 
 Google colabolatory上で動かす場合はnotebook上の指定のセルを実行してください。
