@@ -4,7 +4,7 @@
 ## Grad_Thesisについて
 ### 概要
 学部の卒業論文に関しての再現のためのコードをまとめてあります。  
-論文：[2LGANによる結合因子CTCFの類似結合部位の生成](https://drive.google.com/file/d/1r56vpUBB4srZacMp1zR5HGXoY7XURfbM/view?usp=sharing) 
+論文：[2LGANによる結合因子CTCFの類似結合部位の生成](https://drive.google.com/file/d/1r56vpUBB4srZacMp1zR5HGXoY7XURfbM/view?usp=sharing)  
 論文中の手法1,2,3,4, 提案手法をそれぞれjupyter notebookとして
 - LSGAN_iterNONE.ipynb
 - LSGAN_iterFixedAdam.ipynb
