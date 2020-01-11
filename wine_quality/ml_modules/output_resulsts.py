@@ -11,12 +11,12 @@ from skater.core.explanations import Interpretation
 
 from scipy import interp
 
-def get_results(model, name, data, true_labels, gs=None, target_names = ['low', 'medium', 'high'], results=None, reasume=False):
+def get_results(model, name, data, true_labels,target_labels, gs=None, target_names = ['low', 'medium', 'high'], results=None, reasume=False):
     best = 0
     if hasattr(model, 'layers'):
         param = model.history.params
         best = np.mean(model.history.history['val_accuracy'])
-        predicted_labels = model.predict_classes(data) 
+        predicted_labels = model.predict_classes(data)
         im_model = InMemoryModel(model.predict, examples=data, target_names=target_names)
 
     else:
@@ -29,16 +29,15 @@ def get_results(model, name, data, true_labels, gs=None, target_names = ['low', 
         elif hasattr(model, 'decision_function'):
             im_model = InMemoryModel(model.decision_function, examples=data, target_names=target_names)
     if len(set(true_labels)) < len(set(predicted_labels)):
-        display_model_performance_metrics(true_labels, predicted_labels = predicted_labels, target_names = target_names)
+        display_model_performance_metrics(true_labels, predicted_labels = predicted_labels, target_labels=target_labels, target_names = target_names)
     else:
-        display_model_performance_metrics(true_labels, predicted_labels = predicted_labels, target_names = [str(x) for x in true_labels.unique()])
+        display_model_performance_metrics(true_labels, predicted_labels = predicted_labels, target_labels=target_labels,target_names = [str(x) for x in true_labels.unique()])
     if len(target_names)==2:
         ras = roc_auc_score(y_true=true_labels, y_score=predicted_labels)
     else:
         roc_auc_multiclass, ras = roc_auc_score_multiclass(y_true=true_labels, y_score=predicted_labels, target_names=target_names)
         print('\nROC AUC Score by Classes:\n',roc_auc_multiclass)
         print('-'*60)
-
     print('\n\n              ROC AUC Score: {:2.2%}'.format(ras))
     prob, score_roc, roc_auc = plot_model_roc_curve(model, data, true_labels, label_encoder=None, class_names=target_names)
     
@@ -96,32 +95,32 @@ def train_predict_model(classifier,  train_features, train_labels,  test_feature
     return predictions    
 
 
-def display_confusion_matrix(true_labels, predicted_labels, target_names):
+def display_confusion_matrix(true_labels, predicted_labels, target_labels):
     
-    total_classes = len(target_names)
+    total_classes = len(target_labels)
     level_labels = [total_classes*[0], list(range(total_classes))]
-
-    cm = metrics.confusion_matrix(y_true=true_labels, y_pred=predicted_labels)
+    target_names = [str(x) for x in target_labels]
+    cm = metrics.confusion_matrix(y_true=true_labels, y_pred=predicted_labels, labels=target_labels)
     cm_frame = pd.DataFrame(data=cm, 
                             columns=pd.MultiIndex(levels=[['Predicted:'], target_names], labels=level_labels), 
                             index=pd.MultiIndex(levels=[['Actual:'], target_names], labels=level_labels)) 
     print(cm_frame) 
     
-def display_classification_report(true_labels, predicted_labels, target_names):
-
-    report = metrics.classification_report(y_true=true_labels, y_pred=predicted_labels, target_names=target_names) 
+def display_classification_report(true_labels, predicted_labels, target_labels):
+    target_names = [str(x) for x in target_labels]
+    report = metrics.classification_report(y_true=true_labels, y_pred=predicted_labels, labels = target_labels, target_names=target_names) 
     print(report)
     
-def display_model_performance_metrics(true_labels, predicted_labels, target_names):
+def display_model_performance_metrics(true_labels, predicted_labels, target_labels, target_names):
     print('Model Performance metrics:')
     print('-'*30)
     get_metrics(true_labels=true_labels, predicted_labels=predicted_labels)
     print('\nModel Classification report:')
     print('-'*30)
-    display_classification_report(true_labels=true_labels, predicted_labels=predicted_labels, target_names=target_names)
+    display_classification_report(true_labels=true_labels, predicted_labels=predicted_labels, target_labels=target_labels)
     print('\nPrediction Confusion Matrix:')
     print('-'*30)
-    display_confusion_matrix(true_labels=true_labels, predicted_labels=predicted_labels, target_names=target_names)
+    display_confusion_matrix(true_labels=true_labels, predicted_labels=predicted_labels,  target_labels=target_labels)
 
 
 def plot_model_roc_curve(clf, features, true_labels, label_encoder=None, class_names=None):
