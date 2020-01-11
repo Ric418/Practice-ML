@@ -35,7 +35,7 @@ def get_results(model, name, data, true_labels,target_labels, gs=None, target_na
     if len(target_names)==2:
         ras = roc_auc_score(y_true=true_labels, y_score=predicted_labels)
     else:
-        roc_auc_multiclass, ras = roc_auc_score_multiclass(y_true=true_labels, y_score=predicted_labels, target_names=target_names)
+        roc_auc_multiclass, ras = roc_auc_score_multiclass(y_true=true_labels, y_score=predicted_labels,  target_names=target_names)
         print('\nROC AUC Score by Classes:\n',roc_auc_multiclass)
         print('-'*60)
     print('\n\n              ROC AUC Score: {:2.2%}'.format(ras))
@@ -44,9 +44,9 @@ def get_results(model, name, data, true_labels,target_labels, gs=None, target_na
     interpreter = Interpretation(data, feature_names=data.columns)
     plots = interpreter.feature_importance.plot_feature_importance(im_model, progressbar=False, ascending=True)
     
-    r1 = pd.DataFrame([(prob, best, np.round(accuracy_score(true_labels, predicted_labels), 4), 
+    r1 = pd.DataFrame([(prob, np.round(accuracy_score(true_labels, predicted_labels), 4), 
                          ras, roc_auc)], index = [name],
-                         columns = ['Prob', 'CV Accuracy', 'Accuracy', 'ROC AUC Score', 'ROC Area'])
+                         columns = ['Prob', 'Accuracy', 'ROC AUC Score', 'ROC Area'])
     if reasume:
         results = r1
     elif (name in results.index):        
@@ -70,7 +70,6 @@ def roc_auc_score_multiclass(y_true, y_score, target_names, average = "macro"):
     new_y_true = [0 if x in other_class else 1 for x in y_true]
     new_y_score = [0 if x in other_class else 1 for x in y_score]
     num_new_y_true = sum(new_y_true)
-
     #using the sklearn metrics method to calculate the roc_auc_score
     roc_auc = roc_auc_score(new_y_true, new_y_score, average = average)
     roc_auc_dict[target_names[num]] = np.round(roc_auc, 4)
@@ -216,5 +215,5 @@ def plot_model_roc_curve(clf, features, true_labels, label_encoder=None, class_n
     plt.title('Receiver Operating Characteristic (ROC) Curve')
     plt.legend(loc="lower right")
     plt.show()
-    
+
     return prob, y_score, roc_auc
