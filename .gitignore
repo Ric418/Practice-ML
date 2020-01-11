@@ -243,3 +243,14 @@ wine_quality/README.txt
 wine_quality/voting_model.sav
 wine_quality/wine_test.csv
 wine_quality/wine_train.csv
+wine_quality/y_train.csv
+wine_quality/y_test.csv
+wine_quality/X_train.csv
+wine_quality/X_test.csv
+wine_quality/voting_model.pickle
+wine_quality/results.csv
+wine_quality/ml_modules/__pycache__/processing_module.cpython-36.pyc
+wine_quality/ml_modules/__pycache__/output_resulsts.cpython-36.pyc
+wine_quality/ml_modules/__pycache__/eda.cpython-36.pyc
+wine_quality/ml_modules/__pycache__/__init__.cpython-36.pyc
+.DS_Store
