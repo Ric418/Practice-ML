@@ -254,3 +254,13 @@ wine_quality/ml_modules/__pycache__/output_resulsts.cpython-36.pyc
 wine_quality/ml_modules/__pycache__/eda.cpython-36.pyc
 wine_quality/ml_modules/__pycache__/__init__.cpython-36.pyc
 .DS_Store
+.DS_Store
+wine_quality/data/multico_results.csv
+wine_quality/data/wine_test.csv
+wine_quality/data/wine_train.csv
+wine_quality/data/X_test.csv
+wine_quality/data/X_train.csv
+wine_quality/data/y_test.csv
+wine_quality/data/y_train.csv
+wine_quality/model/multico_voting_model.pickle
+wine_quality/model/voting_model.pickle
