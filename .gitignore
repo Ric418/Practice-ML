@@ -276,3 +276,13 @@ wine_quality/notebook/.ipynb_checkpoints/fix_multicol-checkpoint.ipynb
 wine_quality/notebook/.ipynb_checkpoints/fixmultico_predict-checkpoint.ipynb
 wine_quality/notebook/.ipynb_checkpoints/multico_predict-checkpoint.ipynb
 wine_quality/notebook/.ipynb_checkpoints/multicol-checkpoint.ipynb
+wine_quality/model/pca_rm_multico_voting_model.pickle
+wine_quality/model/lda_rm_multico_voting_model.pickle
+wine_quality/data/pca_rm_multico_results.csv
+wine_quality/data/pca_multico_results.csv
+wine_quality/data/lda_rm_multico_results.csv
+wine_quality/data/.ipynb_checkpoints/rm_multico_results-checkpoint.csv
+wine_quality/data/.ipynb_checkpoints/pca_rm_multico_results-checkpoint.csv
+wine_quality/data/.ipynb_checkpoints/pca_multico_results-checkpoint.csv
+wine_quality/data/.ipynb_checkpoints/multico_results-checkpoint.csv
+wine_quality/data/.ipynb_checkpoints/lda_rm_multico_results-checkpoint.csv
