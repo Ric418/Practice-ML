@@ -303,3 +303,6 @@ wine_quality/notebook/.ipynb_checkpoints/add_fixmultico_predict_proba-Copy1-chec
 wine_quality/notebook/.ipynb_checkpoints/clustering-checkpoint.ipynb
 wine_quality/notebook/.ipynb_checkpoints/logloss_fix_multicol-checkpoint.ipynb
 wine_quality/notebook/.ipynb_checkpoints/predict_test-checkpoint.ipynb
+wine_quality/result.csv
+wine_quality/.ipynb_checkpoints/README-checkpoint.txt
+.DS_Store
