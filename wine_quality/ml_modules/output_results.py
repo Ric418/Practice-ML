@@ -4,10 +4,15 @@ import pandas as pd
 import numpy as np
 
 from sklearn.preprocessing import label_binarize
-from sklearn.metrics import roc_auc_score, roc_curve, auc, accuracy_score
 from skater.model import InMemoryModel
 from skater.core.local_interpretation.lime.lime_tabular import LimeTabularExplainer
 from skater.core.explanations import Interpretation
+
+import matplotlib.pyplot as plt
+from sklearn.metrics import (brier_score_loss, precision_score, recall_score,
+                             f1_score,roc_auc_score, roc_curve, auc, accuracy_score)
+
+
 
 from scipy import interp
 
@@ -217,3 +222,37 @@ def plot_model_roc_curve(clf, features, true_labels, label_encoder=None, class_n
     plt.show()
 
     return prob, y_score, roc_auc
+
+def plot_calibration_curve(clf, X_train,y_train,X_test,y_test):
+    plt.figure(figsize=(10, 10))
+    ax1 = plt.subplot2grid((3, 1), (0, 0), rowspan=2)
+    ax2 = plt.subplot2grid((3, 1), (2, 0))
+
+    ax1.plot([0, 1], [0, 1], "k:", label="Perfectly calibrated")
+    clf.fit(X_train, y_train)
+    if hasattr(clf, "predict_proba"):
+        prob_pos = clf.predict_proba(X_test)[:, 1]
+    else:  # use decision function
+        prob_pos = clf.decision_function(X_test)
+        prob_pos = \
+            (prob_pos - prob_pos.min()) / (prob_pos.max() - prob_pos.min())
+    fraction_of_positives, mean_predicted_value = \
+        calibration_curve(y_test, prob_pos, n_bins=10)
+
+    ax1.plot(mean_predicted_value, fraction_of_positives, "s-",
+             label="%s" % (name, ))
+
+    ax2.hist(prob_pos, range=(0, 1), bins=10, label=name,
+             histtype="step", lw=2)
+
+    ax1.set_ylabel("Fraction of positives")
+    ax1.set_ylim([-0.05, 1.05])
+    ax1.legend(loc="lower right")
+    ax1.set_title('Calibration plots  (reliability curve)')
+
+    ax2.set_xlabel("Mean predicted value")
+    ax2.set_ylabel("Count")
+    ax2.legend(loc="upper center", ncol=2)
+
+    plt.tight_layout()
+    plt.show()
