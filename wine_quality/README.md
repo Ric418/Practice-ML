@@ -1,6 +1,6 @@
 # wine_quality
 
-## ~/notebook/\*
+## ~/notebook/
 
 - 学習・推論
 
