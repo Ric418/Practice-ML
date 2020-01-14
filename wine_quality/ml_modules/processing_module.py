@@ -20,3 +20,12 @@ class DataFrameImputer(TransformerMixin):
 
     def transform(self, X, y=None):
         return X.fillna(self.fill)
+    
+def add_predict_prob(est_dict,df):
+    df.reset_index(inplace=True,drop=True)
+    base_df = df
+    for name, clf in est_dict.items():
+        proba = clf.predict_proba(base_df)
+        df_predict_proba = pd.DataFrame(proba, columns=[name+"_prob_label"+str(x) for x in range(len(proba[0]))])
+        df = pd.merge(df, df_predict_proba,left_index=True, right_index=True)
+    return df
